@@ -8,21 +8,22 @@ def selection_sort(nums: List[int]) -> List[int]:
         nums (List[int]): list of numbers
 
     Returns:
-        List[int]: sorted ist of numbers
+        List[int]: sorted list of numbers
     """
+    nums_ = nums.copy()
     
-    for index, nunber in enumerate(nums):
-        min_value = float('inf')
-        min_position = None
+    n = len(nums_)
+    
+    for index in range(n):
+        min_position = index
         
-        for j, num in enumerate(nums[index:]):
-            if num <= min_value:
-                min_value = num
+        for j in range(index, n):
+            if nums_[j] <= nums_[min_position]:
                 min_position = j
         
-        if min_position:
-            nums[index], nums[min_position] = nums[min_position], nums[index]    
+        if min_position is not None:
+            nums_[index], nums_[min_position] = nums_[min_position], nums_[index]    
         
-    return nums
+    return nums_
             
             
